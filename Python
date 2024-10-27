@@ -1,0 +1,14 @@
+function uploadVideo() {
+    const videoFile = document.getElementById('videoInput').files[0];
+    // قم بإرسال الفيديو إلى الخادم هنا لمعالجته
+}
+
+function convertToText() {
+    // استخدم API لتحويل الفيديو إلى نص
+}
+
+function translateText() {
+    const textToTranslate = document.getElementById('outputText').innerText;
+    const targetLanguage = document.getElementById('languageSelect').value;
+    // استخدم Google Translate API لترجمة النص
+}
