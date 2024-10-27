@@ -81,6 +81,12 @@
             font-size: 1em;
         }
 
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
         button {
             background: #ff0080;
             color: white;
@@ -90,7 +96,7 @@
             cursor: pointer;
             font-size: 1.2em;
             transition: background 0.3s ease;
-            width: 100%;
+            width: 48%;
         }
 
         button:hover {
@@ -142,9 +148,11 @@
         <section id="upload">
             <h2>رفع الفيديو</h2>
             <input type="text" id="video-url" placeholder="أدخل رابط الفيديو هنا">
-            <button id="submit-btn">ترجمة الفيديو</button>
+            <div class="button-container">
+                <button id="submit-btn">ترجمة الفيديو</button>
+                <a href="#" id="download-link" class="download-btn" style="display: none;">تحميل الفيديو</a>
+            </div>
             <div id="video-container"></div>
-            <div id="download-link"></div> <!-- رابط التحميل -->
         </section>
     </main>
 
@@ -159,11 +167,9 @@
             if (videoId) {
                 const iframe = `<iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>`;
                 document.getElementById('video-container').innerHTML = iframe;
-                document.getElementById('download-link').innerHTML = `
-                    <p>لتحميل الفيديو، يمكنك زيارة: 
-                        <a href="https://www.y2mate.com/youtube/${videoId}" target="_blank" class="download-btn">تحميل الفيديو</a>
-                    </p>`;
-                document.getElementById('download-link').style.display = 'block'; // إظهار رابط التحميل
+                const downloadBtn = document.getElementById('download-link');
+                downloadBtn.href = `https://www.y2mate.com/youtube/${videoId}`;
+                downloadBtn.style.display = 'inline-block'; // إظهار رابط التحميل
             } else {
                 alert('يرجى إدخال رابط فيديو يوتيوب صالح.');
             }
