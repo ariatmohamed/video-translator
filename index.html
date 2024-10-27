@@ -3,79 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع مشابه لـ Opus</title>
+    <title>منصة معالجة الفيديو</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="logo">
-            <h1>Opus-like Site</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#features">الميزات</a></li>
-                <li><a href="#about">معلومات عنا</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
-            </ul>
-        </nav>
+        <h1>مرحبًا بك في منصة معالجة الفيديو</h1>
     </header>
-
     <main>
-        <section class="hero">
-            <h2>مرحبًا بك في موقع Opus المشابه</h2>
-            <p>استخدمه لتحميل ومعالجة مقاطع الفيديو بسهولة.</p>
-        </section>
-
-        <section id="upload-section" class="upload-section">
+        <section id="upload">
             <h2>تحميل الفيديو</h2>
-            <div class="upload-container">
-                <label for="file-upload" class="custom-file-upload">اختر فيديو من جهازك</label>
-                <input type="file" id="file-upload" accept="video/*">
-            </div>
-            <div id="video-preview">
-                <h3>معاينة الفيديو</h3>
-                <video id="video" controls></video>
-            </div>
-            <button id="process-video">معالجة الفيديو</button>
+            <input type="file" id="videoInput" accept="video/*">
+            <button onclick="uploadVideo()">رفع الفيديو</button>
         </section>
-
-        <section id="features" class="features">
-            <h2>ميزاتنا</h2>
-            <ul>
-                <li>تقسيم الفيديو إلى مقاطع</li>
-                <li>ترجمة المحتوى إلى عدة لغات</li>
-                <li>إنشاء نص تلقائي من الصوت</li>
-                <li>دعم منصة يوتيوب لتحميل الفيديوهات</li>
-            </ul>
+        <section id="textConversion">
+            <h2>تحويل الفيديو إلى نص</h2>
+            <button onclick="convertToText()">تحويل النص</button>
+            <div id="outputText"></div>
         </section>
-
-        <section id="about" class="about">
-            <h2>معلومات عنا</h2>
-            <p>نحن نقدم خدمات مبتكرة لتحميل ومعالجة مقاطع الفيديو، مع التركيز على تحسين تجربة المستخدم وتوفير أدوات فعالة ومفيدة للمستخدمين.</p>
-        </section>
-
-        <section id="contact" class="contact">
-            <h2>اتصل بنا</h2>
-            <form id="contact-form">
-                <label for="name">الاسم:</label>
-                <input type="text" id="name" required>
-                
-                <label for="email">البريد الإلكتروني:</label>
-                <input type="email" id="email" required>
-                
-                <label for="message">الرسالة:</label>
-                <textarea id="message" required></textarea>
-                
-                <button type="submit">إرسال</button>
-            </form>
+        <section id="translation">
+            <h2>ترجمة النص</h2>
+            <select id="languageSelect">
+                <option value="en">الإنجليزية</option>
+                <option value="fr">الفرنسية</option>
+                <option value="de">الألمانية</option>
+                <!-- أضف المزيد من اللغات هنا -->
+            </select>
+            <button onclick="translateText()">ترجمة</button>
+            <div id="translatedText"></div>
         </section>
     </main>
-
     <footer>
-        <p>&copy; 2024 موقع مشابه لـ Opus. جميع الحقوق محفوظة.</p>
+        <p>&copy; 2024 منصة معالجة الفيديو. جميع الحقوق محفوظة.</p>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
