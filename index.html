@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع ترجمة الفيديوهات</title>
+    <title>موقع ترجمة وتحميل الفيديوهات</title>
     <style>
         * {
             margin: 0;
@@ -133,12 +133,17 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
+
+        #download-link {
+            margin-top: 20px;
+            display: none; /* افتراضيا، لا تظهر */
+        }
     </style>
 </head>
 <body>
-    <div id="background"></div> <!-- عنصر الخلفية -->
+    <div id="background"></div>
     <header>
-        <h1>مرحبًا بك في موقع ترجمة الفيديوهات</h1>
+        <h1>مرحبًا بك في موقع ترجمة وتحميل الفيديوهات</h1>
     </header>
 
     <main>
@@ -146,7 +151,8 @@
             <h2>رفع الفيديو</h2>
             <input type="text" id="video-url" placeholder="أدخل رابط الفيديو هنا">
             <button id="submit-btn">ترجمة الفيديو</button>
-            <div id="video-container"></div> <!-- عنصر iframe لعرض الفيديو -->
+            <div id="video-container"></div>
+            <div id="download-link"></div> <!-- رابط التحميل -->
         </section>
     </main>
 
@@ -161,6 +167,11 @@
             if (videoId) {
                 const iframe = `<iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>`;
                 document.getElementById('video-container').innerHTML = iframe;
+                document.getElementById('download-link').innerHTML = `
+                    <p>لتحميل الفيديو، يمكنك زيارة: 
+                        <a href="https://www.y2mate.com/youtube/${videoId}" target="_blank" style="color: #ff8c00;">تحميل الفيديو</a>
+                    </p>`;
+                document.getElementById('download-link').style.display = 'block'; // إظهار رابط التحميل
             } else {
                 alert('يرجى إدخال رابط فيديو يوتيوب صالح.');
             }
