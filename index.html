@@ -56,7 +56,6 @@
             width: 100%;
         }
 
-        /* خلفية متحركة */
         #background {
             position: absolute;
             top: 0;
@@ -81,7 +80,6 @@
             }
         }
 
-        /* تحسين تصميم النموذج */
         #upload {
             background: rgba(0, 0, 0, 0.8);
             padding: 30px;
@@ -155,6 +153,24 @@
     <footer>
         <p>&copy; 2024 جميع الحقوق محفوظة</p>
     </footer>
-    <script src="script.js"></script>
+    
+    <script>
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            const url = document.getElementById('video-url').value;
+            const videoId = extractVideoId(url);
+            if (videoId) {
+                const iframe = `<iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>`;
+                document.getElementById('video-container').innerHTML = iframe;
+            } else {
+                alert('يرجى إدخال رابط فيديو يوتيوب صالح.');
+            }
+        });
+
+        function extractVideoId(url) {
+            const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^&\n]{11})/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
+        }
+    </script>
 </body>
 </html>
